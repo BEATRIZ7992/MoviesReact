@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+
+
+import { useState } from 'react'
+import Formulario from './formulario';
+
 
 function App() {
+
+  const [items, setItems] = useState([
+    { titulo: 'Menudo es mi padre', protagonista: 'el fary', imagen: 'https://blogs.lasprovincias.es/elsindromededarrin/wp-content/uploads/sites/21/2016/04/Menudo-es-mi-padre.jpg' },
+    { titulo: 'LLeno por favor', protagonista: 'Alfreso Landa', imagen: 'https://cloud10.todocoleccion.online/series-tv-dvd/tc/2019/06/15/11/166217916_156059194959C47391.jpg' }
+  ]);
+
+  const nuevaMovie = (nuevaMovie) => {
+    setItems([
+      ...items,
+      nuevaMovie
+    ])
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <h1>Series y programas que nunca teniamos que haber perdido</h1>
+      <Formulario nuevaSerie={nuevaMovie} />
+     
+
     </div>
   );
 }
